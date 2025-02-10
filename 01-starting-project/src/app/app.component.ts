@@ -7,5 +7,6 @@ import { HeaderComponent } from "./header.component";
   imports: [HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  // poderia ser também styleUrls: ['./app.component.css'] para poder inserir vários estilos.
 })
 export class AppComponent {}
