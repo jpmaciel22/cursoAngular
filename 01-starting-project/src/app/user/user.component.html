@@ -1,7 +1,7 @@
 <div>
   <button (click)="onSelectUser()">
-    <img [src]="imagePath()"> <!-- assim é outra forma de mostrar a variavel na tela
+    <img [src]="imagePath"> <!-- assim é outra forma de mostrar a variavel na tela
     geralmente utilizado quando se trata de propriedades como essa-->
-    <span>{{selectedUser().name}}</span> <!-- assim que se da bind na variavel na tela-->
+    <span>{{ name }}</span> <!-- assim que se da bind na variavel na tela-->
   </button>
 </div>

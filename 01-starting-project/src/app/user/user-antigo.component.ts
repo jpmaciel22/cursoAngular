@@ -3,13 +3,13 @@ import { DUMMY_USERS } from '../dummy-users';
 
 // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length)
 
-@Component({
-  selector: 'app-user',
-  standalone: true,
-  imports: [],
-  templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
-})
+// @Component({
+//   selector: 'app-user',
+//   standalone: true,
+//   imports: [],
+//   templateUrl: './user.component.html',
+//   styleUrl: './user.component.css'
+// })
 export class UserComponent {
   selectedUser = signal(DUMMY_USERS[0]) // isso é feito de forma análoga às locals do
   // controller de JS, aq ele exporta as variaveis da userComponent como locals para serem usadas no seu
