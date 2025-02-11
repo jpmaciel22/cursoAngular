@@ -11,30 +11,26 @@ import { DUMMY_USERS } from '../dummy-users';
   styleUrl: './user.component.css'
 })
 export class UserComponent {// isso é feito de forma análoga às locals do js nativo
-  @Input({ required: true }) id!: string;
-  @Input({ required: true }) avatar!: string; // a exclamacao é para avisar o typescript que sabemos que este valor será settado
-  // mesmo que agora ele ainda não tenha sido inicializado.
-  @Input({ required: true }) name!: string;
+  @Input({required: true}) user!: {name: string, id: string, avatar: string};
+  // a exclamacao é para deixar claro ao typescript que um valor será inserido
 
+  // @Input({required: true}) name!: string;
   //ou com signals seria feito assim:
   // avatar = input.required<string>();
   // name = input.required<string>();
 
   @Output() select = new EventEmitter<string>();
-
   // ou com signals seria feito assim:
-
   // select = output<string>();
 
   get imagePath() {
-    return 'assets/users/' + this.avatar
+    return 'assets/users/' + this.user.avatar
   }
-
   // neste caso com signals muda também e volta à como era antes.
   // imagePath = computed(() => 'assets/users/' + this.avatar())
 
   onSelectUser() {
-    this.select.emit(this.name)
+    this.select.emit(this.user.name)
     //o que acontece aqui é o seguinte.. em app.component.html, quando inicializamos a pagina
     // o app espera acontecer um evento que será capturado pela funcao de output select.
     // o evento em questao é o de click, estabelecido no user.component.html, que roda a funcao
