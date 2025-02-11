@@ -19,6 +19,7 @@ export class AppComponent {
     this.selectedUserName = selectedUserName
     // const selectedUser = this.users.find(user => user.id === selectedUserId)
     // if(selectedUser){
+    // this.selectedUserName = selectedUserName
     // }
   }
 }
