@@ -3,6 +3,12 @@ import { DUMMY_USERS } from '../dummy-users';
 
 // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length)
 
+type User = {
+  name: string,
+  id: string,
+  avatar: string
+}
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -11,7 +17,7 @@ import { DUMMY_USERS } from '../dummy-users';
   styleUrl: './user.component.css'
 })
 export class UserComponent {// isso é feito de forma análoga às locals do js nativo
-  @Input({required: true}) user!: {name: string, id: string, avatar: string};
+  @Input({required: true}) user!: User;
   // a exclamacao é para deixar claro ao typescript que um valor será inserido
 
   // @Input({required: true}) name!: string;
