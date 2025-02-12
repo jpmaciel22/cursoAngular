@@ -15,6 +15,21 @@ export class TasksComponent {
  tasks = [
   {
     id: 't1',
+    userId: 'u1',
+    title: 'Aprender Angular',
+    summary: 'Aprender todas as ferramentas básicas e avançadas do Angular, além de outros formatos de desenvolvimento de aplicativos.',
+    dueDate: '2025-11-30'
+  },
+  {
+    id: 't2',
+    userId: 'u2',
+    title: 'Aprender Angular',
+    summary: 'Aprender todas as ferramentas básicas e avançadas do Angular, além de outros formatos de desenvolvimento de aplicativos.',
+    dueDate: '2025-11-30'
+  },
+  {
+    id: 't3',
+    userId: 'u3',
     title: 'Aprender Angular',
     summary: 'Aprender todas as ferramentas básicas e avançadas do Angular, além de outros formatos de desenvolvimento de aplicativos.',
     dueDate: '2025-11-30'

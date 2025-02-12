@@ -36,7 +36,7 @@ export class UserComponent {// isso é feito de forma análoga às locals do js 
   // imagePath = computed(() => 'assets/users/' + this.avatar())
 
   onSelectUser() {
-    this.select.emit(this.user.name)
+    this.select.emit(this.user.id)
     //o que acontece aqui é o seguinte.. em app.component.html, quando inicializamos a pagina
     // o app espera acontecer um evento que será capturado pela funcao de output select.
     // o evento em questao é o de click, estabelecido no user.component.html, que roda a funcao
