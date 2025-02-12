@@ -6,7 +6,7 @@
 <app-header></app-header>
 <main>
   <ul id="users">
-    @for(i of users; track i.id){
+    @for(i of users; track i.name){
       <li>
         <app-user
           [user]="i"
@@ -15,5 +15,8 @@
       </li>
     }
   </ul>
-  <app-tasks [name]="selectedUserName"></app-tasks>
+  @if(selectedUserName){
+    <app-tasks [name]="selectedUserName"></app-tasks>
+  }
+  <!-- <app-tasks [name]="selectedUserName ? selectedUserName : '' "></app-tasks> -->
 </main>
