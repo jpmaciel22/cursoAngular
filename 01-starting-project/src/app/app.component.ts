@@ -15,11 +15,11 @@ import { TasksComponent } from "./tasks/tasks.component";
 })
 export class AppComponent {
   users = DUMMY_USERS
-  selectedUser?: string; // variavel tipo locals que sera exportada
-  onSelectUserApp(selectedUserId: string){
-    const selectedUser = this.users.find(user => user.id === selectedUserId)
-    if(selectedUser){
-    this.selectedUser = selectedUser.name
-    }
+  selectedUserId?: string; // variavel tipo locals que sera exportada
+  get selectedUser() {
+    return this.users.find((user) => user.id === this.selectedUserId);
+  }
+  onSelectUserApp(id: string) {
+    this.selectedUserId = id;
   }
 }
