@@ -1,5 +1,5 @@
 <div>
-  <button (click)="onSelectUser()">
+  <button [class.active]="selected" (click)="onSelectUser()"> <!-- para adicionar o css 'active' qnd o selected for true-->
     <img [src]="imagePath"> <!-- assim é outra forma de mostrar a variavel na tela
     geralmente utilizado quando se trata de propriedades como essa-->
     <span>{{ user.name }}</span> <!-- assim que se da bind na variavel na tela-->

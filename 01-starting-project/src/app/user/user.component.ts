@@ -23,6 +23,7 @@ export class UserComponent {// isso é feito de forma análoga às locals do js 
   // ou com signals seria feito assim:
   // select = output<string>();
 
+  @Input({required: true}) selected!: boolean
   get imagePath() {
     return 'assets/users/' + this.user.avatar
   }

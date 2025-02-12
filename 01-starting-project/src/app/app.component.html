@@ -10,6 +10,7 @@
       <li>
         <app-user
           [user]="i"
+          [selected]="i.id === selectedUserId"
          (select)="onSelectUserApp($event)"
          ></app-user>
       </li>
