@@ -45,7 +45,10 @@ isAddingTask = false
   onCompleteTaskTasks(id: string){
     this.tasks = this.tasks.filter((task) => task.id === id)
   }
-  onStartAddTask(){
-    this.isAddingTask = true;
+  onStartAddTask(status: boolean){
+    this.isAddingTask = status;
+  }
+  listenCancelAddTask(status: boolean){
+    this.isAddingTask = status
   }
 }

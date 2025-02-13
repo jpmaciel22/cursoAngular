@@ -1,5 +1,5 @@
 @if(isAddingTask){
-  <app-new-task></app-new-task>
+  <app-new-task (cancel)="listenCancelAddTask($event)"></app-new-task>
 }
 
 
@@ -7,7 +7,7 @@
   <header>
     <h2>{{ name }}'s Tasks</h2>
     <menu>
-      <button (click)="onStartAddTask()" >Add Task</button>
+      <button (click)="onStartAddTask(true)">Add Task</button>
     </menu>
 </header>
 
