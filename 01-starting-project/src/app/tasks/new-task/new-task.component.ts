@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Task } from '../task/task.model';
+import { NewTaskData, Task } from '../task/task.model';
 
 @Component({
   selector: 'app-new-task',
@@ -11,7 +11,7 @@ import { Task } from '../task/task.model';
 })
 export class NewTaskComponent {
   @Output() cancel = new EventEmitter<boolean>();
-  @Output() add = new EventEmitter<{title: string,summary:string,dueDate: string;}>()
+  @Output() add = new EventEmitter<NewTaskData>()
   //assim seria feito de forma moderna
   // enteredTitle = signal('');
   // enteredSummary = signal('');

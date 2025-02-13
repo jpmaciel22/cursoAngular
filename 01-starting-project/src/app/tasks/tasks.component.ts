@@ -3,6 +3,7 @@ import { DUMMY_USERS } from '../dummy-users';
 import { UserComponent } from '../user/user.component';
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { NewTaskData } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -51,7 +52,13 @@ isAddingTask = false
   listenCancelAddTask(status: boolean){
     this.isAddingTask = status
   }
-  onAddTask(){
-
+  onAddTask(data: NewTaskData){
+    this.tasks.push({
+      id: new Date().getTime().toString(),
+      title: data.title,
+      summary: data.summary,
+      dueDate: data.dueDate,
+      userId: this.userId
+    })
   }
 }
