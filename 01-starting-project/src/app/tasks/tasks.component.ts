@@ -51,4 +51,7 @@ isAddingTask = false
   listenCancelAddTask(status: boolean){
     this.isAddingTask = status
   }
+  onAddTask(){
+
+  }
 }
