@@ -9,6 +9,8 @@ import { TasksComponent } from "./tasks/tasks.component";
 import { CardComponent } from "./shared/card/card.component";
 import { TaskComponent } from "./tasks/task/task.component";
 import { NewTaskComponent } from "./tasks/new-task/new-task.component";
+import { SharedModule } from "./shared/shared.module";
+import { TasksModule } from "./tasks/tasks.module";
 
 @NgModule({
   declarations: [AppComponent,
@@ -16,7 +18,7 @@ import { NewTaskComponent } from "./tasks/new-task/new-task.component";
                  UserComponent,
 ], // non-standalone components
   bootstrap: [AppComponent],
-  imports: [BrowserModule, FormsModule] // standalone components
+  imports: [BrowserModule, SharedModule, TasksModule] // standalone components
 
 })
 export class AppModule {
