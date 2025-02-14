@@ -30,10 +30,7 @@ constructor(private tasksService: TasksService){// dependency injection
   onStartAddTask(status: boolean){
     this.isAddingTask = status;
   }
-  listenCancelAddTask(status: boolean){
+  listenCloseAddTask(status: boolean){
     this.isAddingTask = status
-  }
-  onAddTask(data: NewTaskData, userId: string){
-    this.tasksService.addTask(data,userId);
   }
 }

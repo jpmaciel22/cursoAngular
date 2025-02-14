@@ -1,6 +1,7 @@
-import { Component, Output, EventEmitter, signal } from '@angular/core';
+import { Component, Output, EventEmitter, signal, inject, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NewTaskData, Task } from '../task/task.model';
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-new-task',
@@ -10,8 +11,8 @@ import { NewTaskData, Task } from '../task/task.model';
   styleUrl: './new-task.component.css'
 })
 export class NewTaskComponent {
-  @Output() cancel = new EventEmitter<boolean>();
-  @Output() add = new EventEmitter<NewTaskData>()
+  @Input({required:true}) userId!: string;
+  @Output() close = new EventEmitter<boolean>();
   //assim seria feito de forma moderna
   // enteredTitle = signal('');
   // enteredSummary = signal('');
@@ -19,16 +20,26 @@ export class NewTaskComponent {
   enteredTitle = '';
   enteredSummary = '';
   enteredDate = '';
+  private tasksService = inject(TasksService)
 
-  cancelAddTask(){
-    this.cancel.emit(false)
+  closeAddTask(){
+    this.close.emit(false)
   }
 
+  // onSubmit(){
+  //   this.add.emit({
+  //     title: this.enteredTitle,
+  //     summary: this.enteredSummary,
+  //     dueDate: this.enteredDate
+  //   })
+  // }
+  // mais moderno com services seria assim:
   onSubmit(){
-    this.add.emit({
+    this.tasksService.addTask({
       title: this.enteredTitle,
       summary: this.enteredSummary,
-      dueDate: this.enteredDate
-    })
+      dueDate: this.enteredDate},this.userId)
+      this.close.emit(false)
   }
 }
+
