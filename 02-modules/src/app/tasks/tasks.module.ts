@@ -3,7 +3,8 @@ import { TasksComponent } from "./tasks.component";
 import { TaskComponent } from "./task/task.component";
 import { NewTaskComponent } from "./new-task/new-task.component";
 @NgModule({
-  declarations: [TasksComponent, TaskComponent, NewTaskComponent]
+  declarations: [TasksComponent, TaskComponent, NewTaskComponent],
+  exports: [TasksComponent]
 })
 export class TasksModule{
 
