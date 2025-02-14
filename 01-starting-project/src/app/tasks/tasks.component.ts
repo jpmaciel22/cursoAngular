@@ -24,9 +24,10 @@ constructor(private tasksService: TasksService){// dependency injection
   get selectedUserTasks(){
     return this.tasksService.getUserTasks(this.userId)
   }
-  onCompleteTaskTasks(id: string){
-    this.tasksService.deleteTask(id);
-  }
+  //metodo antigo sem services abaixo:
+  // onCompleteTaskTasks(id: string){
+  //   this.tasksService.deleteTask(id);
+  // }
   onStartAddTask(status: boolean){
     this.isAddingTask = status;
   }
