@@ -14,10 +14,7 @@ import { NewTaskComponent } from "./tasks/new-task/new-task.component";
   declarations: [AppComponent,
                  HeaderComponent,
                  UserComponent,
-                 CardComponent,
-                 TasksComponent,
-                 TaskComponent,
-                 NewTaskComponent], // non-standalone components
+], // non-standalone components
   bootstrap: [AppComponent],
   imports: [BrowserModule, FormsModule] // standalone components
 
