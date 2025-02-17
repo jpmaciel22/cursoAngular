@@ -1,3 +1,5 @@
 <app-header></app-header>
-<app-user-input></app-user-input>
-<app-investment-results></app-investment-results>
+<app-user-input (add)="listenOnSubmit($event)"></app-user-input>
+@if(typeof investimento !== 'undefined'){
+<app-investment-results [investimentosRaw]="investimento"/>
+}

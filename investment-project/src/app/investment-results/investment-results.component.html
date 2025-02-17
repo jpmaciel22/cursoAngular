@@ -1,14 +1,8 @@
-<!-- <table>
-  <thead>
-    <tr>
-      <th>Initial Investment</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        $80
-      </td>
-    </tr>
-  </tbody>
-</table> -->
+@for(i of resultadosMostraveis; track i.year){
+  <h1>{{i.year| currency }}</h1>
+  <h1>{{i.interest}}</h1>
+  <h1>{{i.valueEndOfYear}}</h1>
+  <h1>{{i.annualInvestment}}</h1>
+  <h1>{{i.totalInterest}}</h1>
+  <h1>{{i.totalAmountInvested}}</h1>
+}
