@@ -10,7 +10,6 @@ import { InputModel, ResultadosModel } from '../user-input/input.model';
   styleUrl: './investment-results.component.css'
 })
 export class InvestmentResultsComponent /**implements OnChanges*/ {
-  @Input() investimentosRaw!: InputModel
   // initialNumber: number = 0;
   // annualNumber: number = 0;
   // returnNumber: number = 0;
@@ -24,29 +23,7 @@ export class InvestmentResultsComponent /**implements OnChanges*/ {
   //     this.durationNumber = Number(this.investimentosRaw.duration);
   //   }
   // }
+@Input() results?: ResultadosModel[];
 
-  initialNumber = Number(this.investimentosRaw.initial)
-  annualNumber = Number(this.investimentosRaw.annual)
-  returnNumber = Number(this.investimentosRaw.return)
-  durationNumber = Number(this.investimentosRaw.duration)
-  resultadosMostraveis: ResultadosModel[] = this.calcularResultados()
 
-  calcularResultados(){
-    const resultados = []
-    for (let i = 0; i < this.durationNumber; i++) {
-      const year = i+1
-      const interestEarnedInYear = this.initialNumber * (this.returnNumber / 100);
-      this.initialNumber += interestEarnedInYear + this.annualNumber;
-      const totalInterest = this.initialNumber - this.annualNumber * year - this.initialNumber;
-      resultados.push({
-        year: year,
-        interest: interestEarnedInYear,
-        valueEndOfYear: this.initialNumber,
-        annualInvestment: this.annualNumber,
-        totalInterest: totalInterest,
-        totalAmountInvested: this.initialNumber + this.annualNumber * year,
-      });
-  }
-    return resultados
-}
 }

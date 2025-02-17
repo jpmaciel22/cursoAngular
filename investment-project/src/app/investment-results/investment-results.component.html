@@ -1,8 +1,22 @@
-@for(i of resultadosMostraveis; track i.year){
-  <h1>{{i.year| currency }}</h1>
-  <h1>{{i.interest}}</h1>
-  <h1>{{i.valueEndOfYear}}</h1>
-  <h1>{{i.annualInvestment}}</h1>
-  <h1>{{i.totalInterest}}</h1>
-  <h1>{{i.totalAmountInvested}}</h1>
+@if(!results){
+<p>Please enter some values and press 'Calculate'.</p>
 }
+
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Investment Value</th>
+      <th>Interest(Year)</th>
+      <th>Total Interest</th>
+      <th>Total Invested</th>
+    </tr>
+  </thead>
+  @for(i of results; track i.year){
+  <tbody>
+    <tr>
+      <td></td>
+      <td>i.year</td>
+    </tr>
+  </tbody>}
+</table>

@@ -9,14 +9,14 @@ import { InputModel } from './input.model';
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-enteredInitial = ''
-enteredAnnual = ''
-enteredReturn = ''
-enteredDuration = ''
-@Output() add = new EventEmitter<InputModel>
+enteredInitial = '0'
+enteredAnnual = '0'
+enteredReturn = '5'
+enteredDuration = '10'
+@Output() calculate = new EventEmitter<InputModel>
 
 onSubmit(){
-  this.add.emit({
+  this.calculate.emit({
     initial: this.enteredInitial,
     annual: this.enteredAnnual,
     return: this.enteredReturn,
