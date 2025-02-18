@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, Input, Output, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, input} from '@angular/core';
 import { InputModel, ResultadosModel } from '../user-input/input.model';
 
 @Component({
@@ -23,7 +23,7 @@ export class InvestmentResultsComponent /**implements OnChanges*/ {
   //     this.durationNumber = Number(this.investimentosRaw.duration);
   //   }
   // }
-@Input() results?: ResultadosModel[];
+  results = input<ResultadosModel[]>()
 
 
 }
