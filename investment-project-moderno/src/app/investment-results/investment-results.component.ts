@@ -1,6 +1,7 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, input} from '@angular/core';
-import { InputModel, ResultadosModel } from '../user-input/input.model';
+import { Component, input, inject} from '@angular/core';
+import { ResultadosModel } from '../user-input/input.model';
+import { InvestmentService } from '../investment.service';
 
 @Component({
   selector: 'app-investment-results',
@@ -9,21 +10,13 @@ import { InputModel, ResultadosModel } from '../user-input/input.model';
   templateUrl: './investment-results.component.html',
   styleUrl: './investment-results.component.css'
 })
-export class InvestmentResultsComponent /**implements OnChanges*/ {
-  // initialNumber: number = 0;
-  // annualNumber: number = 0;
-  // returnNumber: number = 0;
-  // durationNumber: number = 0;
+export class InvestmentResultsComponent {
+  // results = input<ResultadosModel[]>() // aqui é com signals sem service
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if (changes['investimentosRaw']) {
-  //     this.initialNumber = Number(this.investimentosRaw.initial);
-  //     this.annualNumber = Number(this.investimentosRaw.annual);
-  //     this.returnNumber = Number(this.investimentosRaw.return);
-  //     this.durationNumber = Number(this.investimentosRaw.duration);
-  //   }
-  // }
-  results = input<ResultadosModel[]>()
-
+  // private investmentService = inject(InvestmentService) // assim ou assim abaixo
+constructor(private investmentService:InvestmentService){}
+  get results(){
+    return this.investmentService.resultadosMostrar;
+  }
 
 }

@@ -12,9 +12,9 @@
       </tr>
     </thead>
     <tbody>
-      @for(i of results(); track i.year){
+      @for(i of results; track i.year){
         <tr>
-          <td>{{i.year | currency}}</td>
+          <td>{{i.year}}</td>
           <td>{{i.valueEndOfYear | currency}}</td>
           <td>{{i.interest | currency}}</td>
           <td>{{i.totalInterest | currency}}</td>
