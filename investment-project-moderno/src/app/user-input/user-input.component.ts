@@ -22,5 +22,9 @@ onSubmit(){
     return: +this.enteredReturn(),
     duration: +this.enteredDuration()
   }) // o + atrás da variavel transforma em number, isso vem do Angular
+  this.enteredInitial.set('0');
+  this.enteredAnnual.set('0')
+  this.enteredReturn.set('5')
+  this.enteredDuration.set('10')
 }
 }
