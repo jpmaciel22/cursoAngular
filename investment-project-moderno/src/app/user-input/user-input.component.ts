@@ -24,7 +24,13 @@ onSubmit(){
     return: +this.enteredReturn(),
     duration: +this.enteredDuration()
 })
-// o + atrás da variavel transforma em number, isso vem do Angular
+//essa abordagem é em signals
+  // this.calculate.emit({
+  //   initial: +this.enteredInitial(),
+  //   annual: +this.enteredAnnual(),
+  //   return: +this.enteredReturn(),
+  //   duration: +this.enteredDuration()
+  // }) // o + atrás da variavel transforma em number, isso vem do Angular
   this.enteredInitial.set('0');
   this.enteredAnnual.set('0')
   this.enteredReturn.set('5')
