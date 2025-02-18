@@ -12,22 +12,23 @@ import { InputModel, ResultadosModel } from './user-input/input.model';
   imports: [HeaderComponent, UserInputComponent, InvestmentResultsComponent, CommonModule]
 })
 export class AppComponent {
-  resultadosMostrar!: ResultadosModel[]
+  resultadosMostrar?: ResultadosModel[]
   calcularResultados(data: InputModel){
     let initialNumber = Number(data.initial)
     let annualNumber = Number(data.annual)
     let returnNumber = Number(data.return)
     let durationNumber = Number(data.duration)
       const resultados = []
+      let investimentoAoLongo = initialNumber
       for (let i = 0; i < durationNumber; i++) {
         const year = i+1
         const interestEarnedInYear = initialNumber * (returnNumber / 100);
-        initialNumber += interestEarnedInYear + annualNumber;
-        const totalInterest = initialNumber - annualNumber * year - initialNumber;
+        investimentoAoLongo += interestEarnedInYear + annualNumber;
+        const totalInterest = investimentoAoLongo - annualNumber * year - initialNumber;
         resultados.push({
           year: year,
           interest: interestEarnedInYear,
-          valueEndOfYear: initialNumber,
+          valueEndOfYear: investimentoAoLongo,
           annualInvestment: annualNumber,
           totalInterest: totalInterest,
           totalAmountInvested: initialNumber + annualNumber * year,
