@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { UserInputComponent } from "./user-input/user-input.component";
@@ -12,12 +12,13 @@ import { InputModel, ResultadosModel } from './user-input/input.model';
   imports: [HeaderComponent, UserInputComponent, InvestmentResultsComponent, CommonModule]
 })
 export class AppComponent {
-  resultadosMostrar?: ResultadosModel[]
+  resultadosMostrar = signal<ResultadosModel[] | undefined>(undefined)
+
   calcularResultados(data: InputModel){
-    let initialNumber = Number(data.initial)
-    let annualNumber = Number(data.annual)
-    let returnNumber = Number(data.return)
-    let durationNumber = Number(data.duration)
+    let initialNumber = data.initial
+    let annualNumber = data.annual
+    let returnNumber = data.return
+    let durationNumber = data.duration
       const resultados = []
       let investimentoAoLongo = initialNumber
       for (let i = 0; i < durationNumber; i++) {
@@ -34,6 +35,6 @@ export class AppComponent {
           totalAmountInvested: initialNumber + annualNumber * year,
         });
   }
-        this.resultadosMostrar = resultados
+        this.resultadosMostrar.set(resultados)
 }
 }

@@ -1,8 +1,8 @@
 export type InputModel = {
-  initial: string,
-  annual: string,
-  return: string,
-  duration: string,
+  initial: number,
+  annual: number,
+  return: number,
+  duration: number,
 }
 export type ResultadosModel = {
         year: number,

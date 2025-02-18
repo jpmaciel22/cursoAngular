@@ -1,4 +1,4 @@
-import { Component, Output, Input, EventEmitter, inject } from '@angular/core';
+import { Component, output, inject, signal, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputModel } from './input.model';
 @Component({
@@ -9,18 +9,18 @@ import { InputModel } from './input.model';
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-enteredInitial = '0'
-enteredAnnual = '0'
-enteredReturn = '5'
-enteredDuration = '10'
-@Output() calculate = new EventEmitter<InputModel>
+enteredInitial = signal('0')
+enteredAnnual = signal('0')
+enteredReturn = signal('5')
+enteredDuration = signal('10')
+calculate = output<InputModel>()
 
 onSubmit(){
   this.calculate.emit({
-    initial: this.enteredInitial,
-    annual: this.enteredAnnual,
-    return: this.enteredReturn,
-    duration: this.enteredDuration
-  })
+    initial: +this.enteredInitial(),
+    annual: +this.enteredAnnual(),
+    return: +this.enteredReturn(),
+    duration: +this.enteredDuration()
+  }) // o + atrás da variavel transforma em number, isso vem do Angular
 }
 }
