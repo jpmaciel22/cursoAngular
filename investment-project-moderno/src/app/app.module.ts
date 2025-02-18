@@ -9,7 +9,8 @@ import { CurrencyPipe } from "@angular/common";
 
 @NgModule({
   declarations: [AppComponent,HeaderComponent,UserInputComponent,InvestmentResultsComponent],
-  imports:[FormsModule, CurrencyPipe,]
+  imports:[FormsModule, CurrencyPipe,],
+  bootstrap: [AppComponent]
 })
 export class AppModule{
 
