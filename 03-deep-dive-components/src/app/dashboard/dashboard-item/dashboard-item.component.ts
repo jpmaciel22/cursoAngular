@@ -8,5 +8,6 @@ import { Component, input } from '@angular/core';
   styleUrl: './dashboard-item.component.css'
 })
 export class DashboardItemComponent {
-image = input<{src: string, alt:string}>()
+image = input.required<{src: string, alt:string}>()
+title = input.required<string>()
 }
