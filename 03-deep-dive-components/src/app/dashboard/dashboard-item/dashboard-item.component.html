@@ -4,6 +4,7 @@
       <img [src]="image().src" [alt]="image().alt" />
       <h2>{{title()}}</h2>
     </header>
+    <ng-content/> <!-- Isso é utilizado como um placeholder para o conteudo que este component estiver wrappando -->
   </article>
 
 </div>
