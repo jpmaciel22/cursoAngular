@@ -1,4 +1,11 @@
-import { Component, HostBinding, HostListener, input, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  HostListener,
+  input,
+  ViewEncapsulation,
+  inject,
+  ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -20,9 +27,10 @@ export class ControlComponent {
   // }
 
   label = input.required<string>()
-
+  private el = inject(ElementRef) // parecido com o target do js html dom nativo
   onclick(){
     console.log('Click')
+    console.log(this.el)
   }
 
 }
