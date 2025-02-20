@@ -2,11 +2,11 @@
   <!-- neste caso quando utilizamos estas 'template variables' que é como se chama, elas fazem referencia
    ao elemento do dom , no caso à esta textarea ou a este input.-->
   <app-control [label]="'Title'">
-    <input name="title" id="title" #titleInput>
+    <input name="title" id="title" #titleInput #input>
   </app-control>
   <p>
     <app-control [label]="'Request'">
-    <textarea name="request" id="request" rows="3" #textInput>
+    <textarea name="request" id="request" rows="3" #textInput #input>
     </textarea>
   </app-control>
   <p>
