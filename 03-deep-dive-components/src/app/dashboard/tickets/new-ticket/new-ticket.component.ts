@@ -23,9 +23,9 @@ export class NewTicketComponent implements AfterViewInit{
   onSubmit(titleInput: HTMLInputElement, textInput: HTMLTextAreaElement){
     const title = titleInput.value
     const texto = textInput.value
-    console.log(title, texto)
     this.form().nativeElement.reset(); // nesse caso precisamos do .nativeElement pois o ElementRef
     // aponta para o form element que esta fazendo referencia ao elemento do DOM form, porem para acessar O FORM
     //  em si precisamos desse .nativeElement
+
   }
 }
