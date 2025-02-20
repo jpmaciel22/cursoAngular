@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit(titleInput, textInput)"> <!-- forma alternativa ao [(ngModel)]-->
+<form (ngSubmit)="onSubmit(titleInput, textInput)" #form> <!-- forma alternativa ao [(ngModel)]-->
   <!-- neste caso quando utilizamos estas 'template variables' que é como se chama, elas fazem referencia
    ao elemento do dom , no caso à esta textarea ou a este input.-->
   <app-control [label]="'Title'">
