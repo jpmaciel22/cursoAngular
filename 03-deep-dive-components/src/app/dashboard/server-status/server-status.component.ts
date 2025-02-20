@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -8,7 +8,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrl: './server-status.component.css'
 })
 export class ServerStatusComponent implements OnInit, OnDestroy{
-  currentStatus: 'online' | 'offline' | 'unknown' = 'offline';
+  currentStatus = signal<'online'|'offline'|'unknown'>('offline');
+
+
   private intervalID?: ReturnType<typeof setInterval> // o tipo de intervalID deveria ser NodeJS.Timeout
   // porém o angular nao está reocnhecendo, então utiliazmos o typescript para informar que
   // o seu type deve ser o tipo retornado pela funcao setInterval que é esse NodeJS.Timeout
@@ -17,11 +19,11 @@ export class ServerStatusComponent implements OnInit, OnDestroy{
     this.intervalID = setInterval(() => {
       const random = Math.random();
       if(random < 0.5){
-        this.currentStatus = 'online'
+        this.currentStatus.set('online')
       } else if(random < 0.9){
-        this.currentStatus = 'offline'
+        this.currentStatus.set('offline')
       } else{
-        this.currentStatus = 'unknown'
+        this.currentStatus.set('unknown')
       }
     }, 5000)
   }
