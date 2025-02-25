@@ -1,2 +1,8 @@
+    <div>
+      <ul>
+        @for(i of tickets; track i.id){
 
-    <app-new-ticket/>
+        }
+      </ul>
+    </div>
+    <app-new-ticket (add)="onAddingTicket($event)"/>
