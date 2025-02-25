@@ -6,10 +6,10 @@
         'ticket-closed': false
       }"
     ></div>
-    <button>
-      <span class="text">TITLE</span>
+    <button (click)="onToggleDetails()">
+      <span class="text">{{data().title}}</span>
       <span>
-        @if (true) {
+        @if (detailsVisible()) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -43,10 +43,10 @@
     </button>
   </h3>
 
-  @if (true) {
-  <p>TEXT</p>
+  @if (detailsVisible()) {
+  <p>{{data().text}}</p>
 
-  @if (true) {
-  <p><button>Mark as completed</button></p>
+  @if (data().status === 'open') {
+  <p><button (click)="onCloseTickets()">Mark as completed</button></p>
   } }
 </article>
