@@ -19,7 +19,7 @@ export class NewTicketComponent implements AfterViewInit{
   // é bom de tratar os dados se necessario em ngAfterViewInit e nao em ngOnInit, pois no caso do ngOnInit
   // os dados ainda estariam undefined, ao contrário do que acontece com o afterview
   ngAfterViewInit(): void {
-      console.log(this.form().nativeElement)
+      console.log(this.form().nativeElement);
   }
 
   onSubmit(titleInput: HTMLInputElement, textInput: HTMLTextAreaElement){
