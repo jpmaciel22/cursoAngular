@@ -13,6 +13,8 @@ export class SafeLinkDirective {
   onLeavePage(event: MouseEvent ){
     const r = window.confirm('Você quer realmente sair da página?');
     if(r){
+      const address = (event.target as HTMLAnchorElement).href;
+      (event.target as HTMLAnchorElement).href = address + '?from=myapp'
       return;
     }
     else{
