@@ -2,6 +2,7 @@ import { Component, computed, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { Task, TaskStatus } from '../../task.model';
+import { TasksService } from '../../tasks.service';
 
 @Component({
   selector: 'app-task-item',
@@ -11,6 +12,7 @@ import { Task, TaskStatus } from '../../task.model';
   styleUrl: './task-item.component.css',
 })
 export class TaskItemComponent {
+  constructor(private taskService: TasksService){}
   task = input.required<Task>();
   taskStatus = computed(() => {
     switch (this.task().status) {
@@ -30,13 +32,13 @@ export class TaskItemComponent {
 
     switch (status) {
       case 'open':
-        newStatus = 'OPEN';
+        this.taskService.updateTaskStatus(taskId, 'OPEN')
         break;
       case 'in-progress':
-        newStatus = 'IN_PROGRESS';
+        this.taskService.updateTaskStatus(taskId,'IN_PROGRESS');
         break;
       case 'done':
-        newStatus = 'DONE';
+        this.taskService.updateTaskStatus(taskId,'DONE');
         break;
       default:
         break;
