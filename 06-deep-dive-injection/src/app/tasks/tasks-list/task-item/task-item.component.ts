@@ -42,6 +42,7 @@ export class TaskItemComponent {
         this.taskService.updateTaskStatus(taskId,'DONE');
         break;
       default:
+        this.taskService.updateTaskStatus(taskId, 'OPEN')
         break;
     }
   }

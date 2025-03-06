@@ -27,6 +27,10 @@ export const TaskStatusOptions: TaskOptions
   }
 ]
 
+export const TaskStatusOptionsProvider = {
+  provide: TASK_STATUS_OPTIONS, useValue: TaskStatusOptions
+}
+
 export interface Task {
   id: string;
   title: string;
