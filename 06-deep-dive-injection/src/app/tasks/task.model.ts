@@ -1,5 +1,7 @@
 export type TaskStatus = 'OPEN' | 'IN_PROGRESS' | 'DONE';
 
+export const TASK_STATUS_OPTIONS
+
 export const TaskStatusOptions: {
   value: 'open' | 'in-progress' | 'done',
   taskStatus: TaskStatus,
