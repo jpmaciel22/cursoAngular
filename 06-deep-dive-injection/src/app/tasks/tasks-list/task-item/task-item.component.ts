@@ -1,7 +1,7 @@
 import { Component, computed, input,inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { Task, TASK_STATUS_OPTIONS, TaskStatus } from '../../task.model';
+import { Task, TaskStatus} from '../../task.model';
 import { TasksService } from '../../tasks.service';
 import { TasksServiceToken } from '../../../../main';
 
@@ -9,9 +9,6 @@ import { TasksServiceToken } from '../../../../main';
   selector: 'app-task-item',
   standalone: true,
   imports: [FormsModule],
-  providers: [{
-    provide: TASK_STATUS_OPTIONS
-  }],
   templateUrl: './task-item.component.html',
   styleUrl: './task-item.component.css',
 })
