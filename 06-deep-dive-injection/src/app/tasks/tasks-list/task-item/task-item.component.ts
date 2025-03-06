@@ -13,8 +13,8 @@ import { TasksServiceToken } from '../../../../main';
   styleUrl: './task-item.component.css',
 })
 export class TaskItemComponent {
-  private taskService = inject(TasksServiceToken)
-  taskStatusOptions = inject(TASK_STATUS_OPTIONS)
+  private taskService = inject(TasksServiceToken);
+  taskStatusOptions = inject(TASK_STATUS_OPTIONS);
   task = input.required<Task>();
   taskStatus = computed(() => {
     switch (this.task().status) {
