@@ -3,7 +3,7 @@ import {  inject,Component, signal, computed } from '@angular/core';
 import { TaskItemComponent } from './task-item/task-item.component';
 import { TasksService } from '../tasks.service';
 import { TasksServiceToken } from '../../../main';
-import { TaskStatusOptionsProvider } from '../task.model';
+import { TASK_STATUS_OPTIONS, TaskStatusOptionsProvider } from '../task.model';
 
 @Component({
   selector: 'app-tasks-list',
@@ -15,6 +15,7 @@ import { TaskStatusOptionsProvider } from '../task.model';
 })
 export class TasksListComponent {
   private tasksService = inject(TasksServiceToken)
+ taskStatusOptions = inject(TASK_STATUS_OPTIONS)
   private selectedFilter = signal<string>('all');
   tasks = computed(() => {
     switch(this.selectedFilter()){
