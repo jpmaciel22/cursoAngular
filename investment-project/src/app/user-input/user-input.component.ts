@@ -20,7 +20,7 @@ onSubmit(){
     initial: this.enteredInitial,
     annual: this.enteredAnnual,
     return: this.enteredReturn,
-    duration: this.enteredDuration
+    duration: this.enteredDuration;
   })
 }
 }
