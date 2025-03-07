@@ -19,7 +19,7 @@ export class NewMessageComponent {
   }
 
   onSubmit() {
-    this.messagesService.addMessage(this.enteredText())
+    this.messagesService.addMessage(this.enteredText());
     this.enteredText.set('');
   }
 }
