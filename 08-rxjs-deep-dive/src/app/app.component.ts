@@ -15,7 +15,13 @@ export class AppComponent implements OnInit{
   intervalSignal = toSignal(this.interval$, { initialValue: 0});
   // interval = signal(0)
   // doubleInterval = computed(() => this.interval() * 2)
-  customInterval$ = new Observable();
+  customInterval$ = new Observable((subscriber) => {
+    subscriber.next(() => { // aqui neste next controlamos quando ele agirá e não o que ele fará.
+      setInterval(() => {
+        subscriber.next({message: 'New value'});
+      },1000);
+    })
+  });
   private destroyRef = inject(DestroyRef);
 
   constructor(){
@@ -26,6 +32,8 @@ export class AppComponent implements OnInit{
     // setInterval(() => {
     //   this.clickCount.update((prevCount) => prevCount + 1);
     // },1000) // msm coisa praticamente porem com signals
+
+    // apenas com observables abaixo
 
     // const subscription = interval(1000).pipe(
     //   map((val)=>val * 2),
@@ -46,6 +54,11 @@ export class AppComponent implements OnInit{
     });
     this.destroyRef.onDestroy(() => {
       subscription.unsubscribe();
+    })
+
+    //custom observable abaixo:
+    this.customInterval$.subscribe({
+      next: (value) => console.log(value)
     })
   }
 
