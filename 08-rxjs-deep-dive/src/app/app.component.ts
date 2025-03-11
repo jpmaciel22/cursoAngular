@@ -16,11 +16,16 @@ export class AppComponent implements OnInit{
   // interval = signal(0)
   // doubleInterval = computed(() => this.interval() * 2)
   customInterval$ = new Observable((subscriber) => {
-    subscriber.next(() => { // aqui neste next controlamos quando ele agirá e não o que ele fará.
-      setInterval(() => {
+    let timesExecuted = 0 // aqui neste next controlamos quando ele agirá e não o que ele fará.
+      const interval = setInterval(() => {
+        if(timesExecuted > 3){
+          clearInterval(interval);
+          subscriber.complete();
+          return;
+        }
         subscriber.next({message: 'New value'});
+        timesExecuted++
       },1000);
-    })
   });
   private destroyRef = inject(DestroyRef);
 
@@ -58,7 +63,8 @@ export class AppComponent implements OnInit{
 
     //custom observable abaixo:
     this.customInterval$.subscribe({
-      next: (value) => console.log(value)
+      next: (value) => console.log(value),
+      complete: () => console.log('uhu!')
     })
   }
 
