@@ -1,7 +1,7 @@
 import { Component, DestroyRef, inject, OnInit, signal, effect, computed } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 
-import { interval, map } from 'rxjs';
+import { interval, map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,14 @@ import { interval, map } from 'rxjs';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit{
-  clickCount = signal(0)
-  clickCount$ = toObservable(this.clickCount)
-  interval$ = interval(1000)
-  intervalSignal = toSignal(this.interval$, { initialValue: 0})
+  clickCount = signal(0);
+  clickCount$ = toObservable(this.clickCount);
+  interval$ = interval(1000);
+  intervalSignal = toSignal(this.interval$, { initialValue: 0});
   // interval = signal(0)
   // doubleInterval = computed(() => this.interval() * 2)
-  private destroyRef = inject(DestroyRef)
+  customInterval$ = new Observable();
+  private destroyRef = inject(DestroyRef);
 
   constructor(){
     // toObservable(this.clickCount);
@@ -44,7 +45,7 @@ export class AppComponent implements OnInit{
       next: (value) => console.log('O botão foi clicado ' + this.clickCount() + ' vezes.')
     });
     this.destroyRef.onDestroy(() => {
-      subscription.unsubscribe()
+      subscription.unsubscribe();
     })
   }
 
