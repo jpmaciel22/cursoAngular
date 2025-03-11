@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, signal, effect, computed } from '@angular/core';
+import { toObservable } from '@angular/core/rxjs-interop';
 
-import { interval } from 'rxjs';
+import { interval, map } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,36 @@ import { interval } from 'rxjs';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit{
+  clickCount = signal(0)
+  clickCount$ = toObservable(this.clickCount)
+  // interval = signal(0)
+  // doubleInterval = computed(() => this.interval() * 2)
+  private destroyRef = inject(DestroyRef)
+
+  constructor(){
+    // toObservable(this.clickCount);
+  }
+
   ngOnInit():void{
-    interval(1000).subscribe({ // o subscribe é importante para iniciar em si o observable, sem ele o interval não rodaria.
-      next: (value) => {console.log(value)},
-      complete: () => {} // executa quando completa..
-    });
+    // setInterval(() => {
+    //   this.clickCount.update((prevCount) => prevCount + 1);
+    // },1000) // msm coisa praticamente porem com signals
+
+    // const subscription = interval(1000).pipe(
+    //   map((val)=>val * 2),
+
+    // ).subscribe({ // o subscribe é importante para iniciar em si o observable, sem ele o interval não rodaria.
+    //   next: (value) => {console.log(value+1)},
+    //   complete: () => {} // executa quando completa..
+    // });
+
+    // this.destroyRef.onDestroy(() => {
+    //   subscription.unsubscribe()
+    // })
+  }
+
+  onClick(){
+    this.clickCount.update((prevCount) => prevCount + 1);
+    // console.log('CLICKS: '+this.clickCount())
   }
 }
