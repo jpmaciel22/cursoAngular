@@ -35,7 +35,7 @@ export class AvailablePlacesComponent implements OnInit {
       }
     });
     this.destroyRef.onDestroy(() => {
-      subscription.unsubscribe()
+      subscription.unsubscribe();
     })
   }
   onSelectPlace(selectedPlace: Place){
