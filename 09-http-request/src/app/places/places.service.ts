@@ -15,7 +15,7 @@ export class PlacesService {
   loadedUserPlaces = this.userPlaces.asReadonly();
 
   loadAvailablePlaces() {
-    return this.fetchPlaces('http://localhost:3000/places');
+    return this.fetchPlaces('http://localhost:3000/places')
   }
 
   loadUserPlaces() {
