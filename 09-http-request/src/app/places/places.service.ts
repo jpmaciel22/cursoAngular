@@ -3,6 +3,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { Place } from './place.model';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap, throwError } from 'rxjs';
+import { ErrorService } from '../shared/error.service';
 
 
 @Injectable({
@@ -11,6 +12,7 @@ import { catchError, map, tap, throwError } from 'rxjs';
 export class PlacesService {
   private httpClient = inject(HttpClient)
   private userPlaces = signal<Place[]>([]);
+  private errorService = inject(ErrorService)
 
   loadedUserPlaces = this.userPlaces.asReadonly();
 
@@ -36,7 +38,8 @@ export class PlacesService {
     return this.httpClient.put('http://localhost:3000/user-places', {placeId: place.id}).pipe(
       catchError(err => {
         this.userPlaces.set(prevPlaces);
-        return throwError(() => new Error(err))
+        this.errorService.showError(err)
+        return throwError(() => new Error(err.message))
       })
     )
   }
