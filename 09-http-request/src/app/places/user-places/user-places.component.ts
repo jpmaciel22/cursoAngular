@@ -19,8 +19,8 @@ export class UserPlacesComponent implements OnInit{
   error = signal('')
   // private httpClient = inject(HttpClient) // para fazer http requests com angular
   private destroyRef = inject(DestroyRef)
-  private placesService = inject(PlacesService)
-  places = this.placesService.loadedUserPlaces
+  private placesService = inject(PlacesService);
+  places = this.placesService.loadedUserPlaces;
 
   ngOnInit(): void {
       this.isFetching.set(true)
@@ -37,9 +37,7 @@ export class UserPlacesComponent implements OnInit{
     }
 
     onSelectPlace(place: Place){
-      const subscription = this.placesService.removeUserPlace(place).subscribe({
-        next: (resData) => console.log(resData)
-      });
+      const subscription = this.placesService.removeUserPlace(place).subscribe();
       this.destroyRef.onDestroy(() => {
         subscription.unsubscribe();
       });

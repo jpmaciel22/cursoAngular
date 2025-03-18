@@ -35,7 +35,7 @@ export class PlacesService {
     this.userPlaces.set([...prevPlaces,place])
     }
 
-    return this.httpClient.put('http://localhost:3000/user-places', {id: place.id}).pipe(
+    return this.httpClient.put('http://localhost:3000/user-places', {placeId: place.id}).pipe(
       catchError(err => {
         this.userPlaces.set(prevPlaces);
         this.errorService.showError(err.message)
@@ -51,7 +51,7 @@ export class PlacesService {
       this.userPlaces.set(prevPlaces.filter((array) => array.id !== place.id))
       }
 
-    return this.httpClient.delete('http://localhost:3000/user-places/:' + place.id).pipe(
+    return this.httpClient.delete('http://localhost:3000/user-places/' + place.id).pipe(
       catchError((error) => {
         this.userPlaces.set(prevPlaces);
         this.errorService.showError(error.message);
