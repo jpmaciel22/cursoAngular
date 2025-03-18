@@ -24,7 +24,7 @@ export class AvailablePlacesComponent implements OnInit {
   ngOnInit(): void {
     this.isFetching.set(true)
     const subscription = this.placesService.loadAvailablePlaces()
-    .subscribe({
+    .subscribe({ // há um pipe dentro da funcao fetchplaces, sem ele deveria ser igual abaixo.
       next: (places) => {
         // this.places.update((array) => array = places.places) // neste caso sem o pipe
         this.places.update((array) => array = places)
