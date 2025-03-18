@@ -25,7 +25,7 @@ export class UserPlacesComponent implements OnInit{
   ngOnInit(): void {
       this.isFetching.set(true)
       const subscription = this.placesService.loadUserPlaces()
-      .subscribe({ // este pipe poderia ser ignorado, mas para termos mais exemplos estarei usando aqui.
+      .subscribe({
         complete: () => {this.isFetching.set(false)},
         error: (error) => {
           this.error.set(error.message)
