@@ -11,6 +11,19 @@ import { FormsModule, NgForm } from '@angular/forms';
 export class LoginComponent {
   constructor(){
     afterNextRender(() => {
+      const savedForm = window.localStorage.getItem('saved-login-form');
+      if(savedForm){
+        const loadedFormData = JSON.parse(savedForm)
+        const savedEmail = loadedFormData.email;
+        const savedPassword = loadedFormData.password;
+
+        setTimeout(() => {
+          this.form()!.controls['email'].setValue(savedEmail); // este controls funciona como o 'emails.touched'
+          // do html, já que ele puxa os dados diretamente do #email='ngModel'
+          this.form()!.controls['password'].setValue(savedPassword);
+        },100)
+      }
+
       const subscription = this.form()?.valueChanges?.subscribe({
         next: (value) => {
           window.localStorage.setItem('saved-login-form',JSON.stringify(
