@@ -23,4 +23,11 @@ export class LoginComponent {
     const inputPassword = this.NossoForm.value.password
     this.NossoForm.reset();
   }
+
+  get emailInvalid(){
+    return(this.NossoForm.controls.email.touched && this.NossoForm.controls.email.dirty && !this.NossoForm.controls.email.valid)
+  }
+  get passwordInvalid(){
+    return(this.NossoForm.controls.password.touched && this.NossoForm.controls.password.dirty && !this.NossoForm.controls.password.valid)
+  }
 }

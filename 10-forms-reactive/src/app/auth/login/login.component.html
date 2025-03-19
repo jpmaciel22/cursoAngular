@@ -14,10 +14,10 @@
 
     <button class="button">Login</button>
   </div>
-  @if(NossoForm.controls.email.touched && NossoForm.controls.email.dirty && !NossoForm.controls.email.valid){
+  @if(emailInvalid){
     <p class="control-error">Email inválido inserido, por favor corrija.</p>
   }
-  @if(NossoForm.controls.password.touched && NossoForm.controls.password.dirty && !NossoForm.controls.password.valid){
+  @if(passwordInvalid){
     <p class="control-error">Senha inválida inserida, mínimo de 6 caracteres.</p>
   }
 </form>
