@@ -4,14 +4,18 @@
   <div class="control-row">
     <div class="control no-margin">
       <label for="email">Email</label>
-      <input id="email" type="email" name="email" ngModel required email/>
+      <input id="email" type="email" name="email" ngModel required #email="ngModel" email/>
     </div>
 
     <div class="control no-margin">
       <label for="password">Password</label>
-      <input id="password" type="password" name="password" ngModel required minlength="6"/>
+      <input id="password" type="password" name="password" ngModel required minlength="6" #password="ngModel"/>
     </div>
 
     <button class="button">Login</button>
   </div>
+
+  @if(!form.form.valid && (email.touched || password.touched)){
+    <p class="control-error">Invalid inputs, please type again.</p>
+  }
 </form>
