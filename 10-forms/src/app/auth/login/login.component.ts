@@ -21,7 +21,7 @@ export class LoginComponent {
           this.form()!.controls['email'].setValue(savedEmail); // este controls funciona como o 'emails.touched'
           // do html, já que ele puxa os dados diretamente do #email='ngModel'
           this.form()!.controls['password'].setValue(savedPassword);
-        },100)
+        },100);
       }
 
       const subscription = this.form()?.valueChanges?.subscribe({
