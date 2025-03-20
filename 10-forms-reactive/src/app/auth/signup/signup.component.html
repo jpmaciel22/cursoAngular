@@ -33,7 +33,7 @@
   @if (passwordInvalid) {
     <p class="control-error">Senha inválida, mínimo de 6 caracteres.</p>
   }
-  @if (confirmaPassInvalid && (NossoForm.controls.confirmpass !== NossoForm.controls.password)) {
+  @if (confirmaPassInvalid && NossoForm.controls.confirmpass !== NossoForm.controls.password) {
     <p class="control-error">As senhas devem ser iguais.</p>
   }
   <hr />
@@ -46,6 +46,7 @@
           type="text"
           id="first-name"
           name="first-name"
+          [formControl]="NossoForm.controls.firstName"
         />
       </div>
 
@@ -55,7 +56,14 @@
           type="text"
           id="last-name"
           name="last-name"
+          [formControl]="NossoForm.controls.lastName"
         />
+        @if (firstNameInvalid) {
+          <p class="control-error">Insira um first name.</p>
+        }
+        @if (lastNameInvalid) {
+          <p class="control-error">Insira um último name.</p>
+        }
       </div>
     </div>
 

@@ -28,12 +28,20 @@ export class SignupComponent {
     confirmpass: new FormControl('',{
       validators: [Validators.required, Validators.minLength(6),],
     }),
-
+    firstName: new FormControl('',{
+      validators: [Validators.required,],
+    }),
+    lastName: new FormControl('',{
+      validators: [Validators.required,],
+    }),
   })
   onSubmit(){
     const emailInput = this.NossoForm.value.email;
     const passInput = this.NossoForm.value.password;
-    console.log(emailInput, passInput)
+    const confirmPassInput = this.NossoForm.value.confirmpass;
+
+    console.log(emailInput, passInput, confirmPassInput)
+    this.onReset()
   }
   get emailInvalid(){
     return(this.NossoForm.controls.email.touched && this.NossoForm.controls.email.dirty && !this.NossoForm.controls.email.valid)
@@ -42,6 +50,12 @@ export class SignupComponent {
     return(this.NossoForm.controls.password.touched && this.NossoForm.controls.password.dirty && !this.NossoForm.controls.password.valid)
   }
   get confirmaPassInvalid(){
+    return(this.NossoForm.controls.confirmpass.touched && this.NossoForm.controls.confirmpass.dirty && !this.NossoForm.controls.confirmpass.valid)
+  }
+  get firstNameInvalid(){
+    return(this.NossoForm.controls.confirmpass.touched && this.NossoForm.controls.confirmpass.dirty && !this.NossoForm.controls.confirmpass.valid)
+  }
+  get lastNameInvalid(){
     return(this.NossoForm.controls.confirmpass.touched && this.NossoForm.controls.confirmpass.dirty && !this.NossoForm.controls.confirmpass.valid)
   }
   onReset(){
