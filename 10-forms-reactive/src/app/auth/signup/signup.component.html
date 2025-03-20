@@ -7,14 +7,16 @@
     <input id="email" type="email" name="email" [formControl]="NossoForm.controls.email"/>
   </div>
 
-  <div class="control-row">
+  <div class="control-row" formGroupName="passwords"> <!--Devemos adicionar a nested
+    form group dentro de algum componente que os nested controls compartilhem.-->
+    <!-- podia estar sendo chamado como [formGroup]="NossoForm.controls.passwords"-->
     <div class="control">
       <label for="password">Password</label>
       <input
         id="password"
         type="password"
         name="password"
-        [formControl]="NossoForm.controls.password"
+        formControlName="password"
       />
     </div>
     <div class="control">
@@ -23,7 +25,7 @@
         id="confirm-password"
         type="password"
         name="confirm-password"
-        [formControl]="NossoForm.controls.confirmpass"
+        formControlName="confirmpass"
       />
     </div>
   </div>
@@ -33,7 +35,7 @@
   @if (passwordInvalid) {
     <p class="control-error">Senha inválida, mínimo de 6 caracteres.</p>
   }
-  @if (confirmaPassInvalid && NossoForm.controls.confirmpass !== NossoForm.controls.password) {
+  @if (confirmaPassInvalid && NossoForm.controls.passwords.controls.confirmpass !== NossoForm.controls.passwords.controls.password) {
     <p class="control-error">As senhas devem ser iguais.</p>
   }
   <hr />
@@ -61,30 +63,30 @@
       </div>
     </div>
 
-    <fieldset>
+    <fieldset formGroupName="address">
       <legend>Your Address</legend>
 
       <div class="control-row">
         <div class="control">
           <label for="street">Street</label>
-          <input type="text" id="street" name="street" [formControl]="NossoForm.controls.street" />
+          <input type="text" id="street" name="street" formControlName="street" />
         </div>
 
         <div class="control">
           <label for="number">Number</label>
-          <input type="text" id="number" name="number" [formControl]="NossoForm.controls.houseNumber" />
+          <input type="text" id="number" name="number" formControlName="houseNumber" />
         </div>
       </div>
 
       <div class="control-row">
         <div class="control">
           <label for="postal-code">Postal Code</label>
-          <input type="text" id="postal-code" name="postal-code" [formControl]="NossoForm.controls.postalCode"/>
+          <input type="text" id="postal-code" name="postal-code" formControlName="postalCode"/>
         </div>
 
         <div class="control">
           <label for="city">City</label>
-          <input type="text" id="city" name="city" [formControl]="NossoForm.controls.city" />
+          <input type="text" id="city" name="city" formControlName="city" />
         </div>
       </div>
     </fieldset>

@@ -20,14 +20,18 @@ export class SignupComponent {
 
   NossoForm = new FormGroup({
     email: new FormControl('',{validators: [Validators.email, Validators.required],}),
-    password: new FormControl('',{validators: [Validators.required, Validators.minLength(6)],}),
-    confirmpass: new FormControl('',{validators: [Validators.required, Validators.minLength(6),],}),
+    passwords: new FormGroup({
+      password: new FormControl('',{validators: [Validators.required, Validators.minLength(6)],}),
+      confirmpass: new FormControl('',{validators: [Validators.required, Validators.minLength(6),],}),
+    }),
     firstName: new FormControl('',{validators: [Validators.required,],}),
     lastName: new FormControl('',{validators: [Validators.required,],}),
-    street: new FormControl('',{validators: [Validators.required,],}),
-    houseNumber: new FormControl('',{validators: [Validators.required,],}),
-    postalCode: new FormControl('',{validators: [Validators.required,],}),
-    city: new FormControl('',{validators: [Validators.required,],}),
+    address: new FormGroup({
+      street: new FormControl('',{validators: [Validators.required,],}),
+      houseNumber: new FormControl('',{validators: [Validators.required,],}),
+      postalCode: new FormControl('',{validators: [Validators.required,],}),
+      city: new FormControl('',{validators: [Validators.required,],}),
+    }),
     dropdown: new FormControl<'student' | 'teacher' | 'employee' | 'founder' | 'other'>('student',
       {validators: [Validators.required]}
      ),
@@ -35,17 +39,17 @@ export class SignupComponent {
 
   })
   onSubmit(){
-    console.log(this.NossoForm.controls)
-    this.onReset()
+    console.log(this.NossoForm)
+    // this.onReset()
   }
   get emailInvalid(){
     return(this.NossoForm.controls.email.touched && this.NossoForm.controls.email.dirty && !this.NossoForm.controls.email.valid)
   }
   get passwordInvalid(){
-    return(this.NossoForm.controls.password.touched && this.NossoForm.controls.password.dirty && !this.NossoForm.controls.password.valid)
+    return(this.NossoForm.controls.passwords.controls.password.touched && this.NossoForm.controls.passwords.controls.password.dirty && !this.NossoForm.controls.passwords.controls.password.valid)
   }
   get confirmaPassInvalid(){
-    return(this.NossoForm.controls.confirmpass.touched && this.NossoForm.controls.confirmpass.dirty && !this.NossoForm.controls.confirmpass.valid)
+    return(this.NossoForm.controls.passwords.controls.confirmpass.touched && this.NossoForm.controls.passwords.controls.confirmpass.dirty && !this.NossoForm.controls.passwords.controls.confirmpass.valid)
   }
   onReset(){
     this.NossoForm.reset()
