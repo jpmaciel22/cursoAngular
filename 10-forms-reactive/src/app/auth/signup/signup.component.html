@@ -58,12 +58,6 @@
           name="last-name"
           [formControl]="NossoForm.controls.lastName"
         />
-        @if (firstNameInvalid) {
-          <p class="control-error">Insira um first name.</p>
-        }
-        @if (lastNameInvalid) {
-          <p class="control-error">Insira um último name.</p>
-        }
       </div>
     </div>
 
@@ -73,24 +67,24 @@
       <div class="control-row">
         <div class="control">
           <label for="street">Street</label>
-          <input type="text" id="street" name="street" />
+          <input type="text" id="street" name="street" [formControl]="NossoForm.controls.street" />
         </div>
 
         <div class="control">
           <label for="number">Number</label>
-          <input type="text" id="number" name="number" />
+          <input type="text" id="number" name="number" [formControl]="NossoForm.controls.houseNumber" />
         </div>
       </div>
 
       <div class="control-row">
         <div class="control">
           <label for="postal-code">Postal Code</label>
-          <input type="text" id="postal-code" name="postal-code" />
+          <input type="text" id="postal-code" name="postal-code" [formControl]="NossoForm.controls.postalCode"/>
         </div>
 
         <div class="control">
           <label for="city">City</label>
-          <input type="text" id="city" name="city" />
+          <input type="text" id="city" name="city" [formControl]="NossoForm.controls.city" />
         </div>
       </div>
     </fieldset>
@@ -101,7 +95,7 @@
   <div class="control-row">
     <div class="control">
       <label for="role">What best describes your role?</label>
-      <select id="role" name="role">
+      <select id="role" name="role" [formControl]="NossoForm.controls.dropdown">
         <option value="student">Student</option>
         <option value="teacher">Teacher</option>
         <option value="employee">Employee</option>
@@ -151,6 +145,7 @@
           type="checkbox"
           id="terms-and-conditions"
           name="terms"
+          [formControl]="NossoForm.controls.agree"
         />
         I agree to the terms and conditions
       </label>

@@ -19,28 +19,23 @@ export class SignupComponent {
   // }
 
   NossoForm = new FormGroup({
-    email: new FormControl('',{
-      validators: [Validators.email, Validators.required],
-    }),
-    password: new FormControl('',{
-      validators: [Validators.required, Validators.minLength(6)],
-    }),
-    confirmpass: new FormControl('',{
-      validators: [Validators.required, Validators.minLength(6),],
-    }),
-    firstName: new FormControl('',{
-      validators: [Validators.required,],
-    }),
-    lastName: new FormControl('',{
-      validators: [Validators.required,],
-    }),
+    email: new FormControl('',{validators: [Validators.email, Validators.required],}),
+    password: new FormControl('',{validators: [Validators.required, Validators.minLength(6)],}),
+    confirmpass: new FormControl('',{validators: [Validators.required, Validators.minLength(6),],}),
+    firstName: new FormControl('',{validators: [Validators.required,],}),
+    lastName: new FormControl('',{validators: [Validators.required,],}),
+    street: new FormControl('',{validators: [Validators.required,],}),
+    houseNumber: new FormControl('',{validators: [Validators.required,],}),
+    postalCode: new FormControl('',{validators: [Validators.required,],}),
+    city: new FormControl('',{validators: [Validators.required,],}),
+    dropdown: new FormControl<'student' | 'teacher' | 'employee' | 'founder' | 'other'>('student',
+      {validators: [Validators.required]}
+     ),
+    agree: new FormControl<boolean>(false, {validators: [Validators.required]}),
+
   })
   onSubmit(){
-    const emailInput = this.NossoForm.value.email;
-    const passInput = this.NossoForm.value.password;
-    const confirmPassInput = this.NossoForm.value.confirmpass;
-
-    console.log(emailInput, passInput, confirmPassInput)
+    console.log(this.NossoForm.controls)
     this.onReset()
   }
   get emailInvalid(){
@@ -50,12 +45,6 @@ export class SignupComponent {
     return(this.NossoForm.controls.password.touched && this.NossoForm.controls.password.dirty && !this.NossoForm.controls.password.valid)
   }
   get confirmaPassInvalid(){
-    return(this.NossoForm.controls.confirmpass.touched && this.NossoForm.controls.confirmpass.dirty && !this.NossoForm.controls.confirmpass.valid)
-  }
-  get firstNameInvalid(){
-    return(this.NossoForm.controls.confirmpass.touched && this.NossoForm.controls.confirmpass.dirty && !this.NossoForm.controls.confirmpass.valid)
-  }
-  get lastNameInvalid(){
     return(this.NossoForm.controls.confirmpass.touched && this.NossoForm.controls.confirmpass.dirty && !this.NossoForm.controls.confirmpass.valid)
   }
   onReset(){
