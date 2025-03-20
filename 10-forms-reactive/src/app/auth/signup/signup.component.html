@@ -1,10 +1,10 @@
-<form>
+<form [formGroup]="NossoForm" (ngSubmit)="onSubmit()">
   <h2>Welcome on board!</h2>
   <p>We just need a little bit of data from you to get you started 🚀</p>
 
   <div class="control">
     <label for="email">Email</label>
-    <input id="email" type="email" name="email" />
+    <input id="email" type="email" name="email" [formControl]="NossoForm.controls.email"/>
   </div>
 
   <div class="control-row">
@@ -14,19 +14,28 @@
         id="password"
         type="password"
         name="password"
+        [formControl]="NossoForm.controls.password"
       />
     </div>
-
     <div class="control">
       <label for="confirm-password">Confirm Password</label>
       <input
         id="confirm-password"
         type="password"
         name="confirm-password"
+        [formControl]="NossoForm.controls.confirmpass"
       />
     </div>
   </div>
-
+  @if (emailInvalid) {
+    <p class="control-error">Email inválido.</p>
+  }
+  @if (passwordInvalid) {
+    <p class="control-error">Senha inválida, mínimo de 6 caracteres.</p>
+  }
+  @if (confirmaPassInvalid && (NossoForm.controls.confirmpass !== NossoForm.controls.password)) {
+    <p class="control-error">As senhas devem ser iguais.</p>
+  }
   <hr />
 
   <div>
@@ -141,7 +150,7 @@
   </div>
 
   <p class="form-actions">
-    <button type="reset" class="button button-flat">Reset</button>
+    <button type="reset" class="button button-flat" (click)="onReset()">Reset</button>
     <button type="submit" class="button">Sign up</button>
   </p>
 </form>
