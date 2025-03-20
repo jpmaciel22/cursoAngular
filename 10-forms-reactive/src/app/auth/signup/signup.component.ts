@@ -2,6 +2,27 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { debounceTime, of } from 'rxjs';
 
+// function senhasIguais(control: AbstractControl){
+//   const password = control.get('password')?.value
+//   const confirmpass = control.get('confirmpass')?.value
+//   if(password === confirmpass){
+//     return null;
+//   }
+//   return {senhasErradas: true}
+// }
+
+function senhasIguais(controlName1: string, controlName2: string){
+    return (control: AbstractControl) => {
+      const password = control.get('password')?.value
+      const confirmpass = control.get('confirmpass')?.value
+      if(password === confirmpass){
+        return null;
+      }
+    return {senhasErradas: true}
+    }
+  }
+
+
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -10,20 +31,12 @@ import { debounceTime, of } from 'rxjs';
   imports: [ReactiveFormsModule]
 })
 export class SignupComponent {
-
-  // senhasIguais(control: AbstractControl){
-  //   if(control.value === this.NossoForm.controls.password){
-  //     return null;
-  //   }
-  //   return { confirmaErrado: true };
-  // }
-
   NossoForm = new FormGroup({
     email: new FormControl('',{validators: [Validators.email, Validators.required],}),
     passwords: new FormGroup({
       password: new FormControl('',{validators: [Validators.required, Validators.minLength(6)],}),
       confirmpass: new FormControl('',{validators: [Validators.required, Validators.minLength(6),],}),
-    }),
+    },{validators: [senhasIguais('password','confirmpass')]}),
     firstName: new FormControl('',{validators: [Validators.required,],}),
     lastName: new FormControl('',{validators: [Validators.required,],}),
     address: new FormGroup({
@@ -44,7 +57,9 @@ export class SignupComponent {
 
   })
   onSubmit(){
-    console.log(this.NossoForm)
+    if(this.NossoForm.invalid){
+      return;
+    }
     this.onReset()
   }
   get emailInvalid(){
@@ -54,7 +69,7 @@ export class SignupComponent {
     return(this.NossoForm.controls.passwords.controls.password.touched && this.NossoForm.controls.passwords.controls.password.dirty && !this.NossoForm.controls.passwords.controls.password.valid)
   }
   get confirmaPassInvalid(){
-    return(this.NossoForm.controls.passwords.controls.confirmpass.touched && this.NossoForm.controls.passwords.controls.confirmpass.dirty && !this.NossoForm.controls.passwords.controls.confirmpass.valid)
+    return(this.NossoForm.controls.passwords.controls.confirmpass.touched && this.NossoForm.controls.passwords.controls.confirmpass.dirty && !this.NossoForm.controls.passwords.controls.confirmpass.valid && this.NossoForm.controls.passwords.invalid)
   }
   onReset(){
     this.NossoForm.reset()
