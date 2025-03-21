@@ -1,7 +1,7 @@
 <ul id="users">
-  @for (user of users; track user.id) {
+  @for (i of users; track i.id) {
     <li>
-      <app-user [user]="user" />
+      <app-user [user]="i" />
     </li>
   }
 </ul>
