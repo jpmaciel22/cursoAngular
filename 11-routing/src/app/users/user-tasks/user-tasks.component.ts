@@ -14,7 +14,7 @@ export class UserTasksComponent{
   // ja que foi ativado a partir do app config.
   private usersService = inject(UsersService);
   userName = computed(() => this.usersService.users.find((user) => user.id === this.userId())?.name);
-
+  dataInputTeste = input.required<string>(); // a static data passada pelo approutes
 
   // userName = ''
   // private activatedRoute = inject(ActivatedRoute);

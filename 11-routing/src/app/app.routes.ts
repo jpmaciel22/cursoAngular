@@ -13,7 +13,10 @@ export const routes: Routes =
   {
     path: 'users/:userId', // localhost:4200/users/(o user id)/
     component: UserTasksComponent,
-    children: userRoutes
+    children: userRoutes,
+    data: {
+      dataInputTeste: 'Mensagem de teste.'
+    }
   },
   {
     path: '**',
