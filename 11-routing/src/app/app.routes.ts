@@ -16,6 +16,12 @@ export const routes: Routes =
     component: UserTasksComponent,
     children: [
       {
+        path: '', // aqui no caso é, se digitarmos diretamente o link do pai ao inves de clicar nos users,
+        // digitarmos users/u2 por exemplo, irá redirecionar para a children de baixo tasks.
+        redirectTo: 'tasks',
+        pathMatch: 'full'
+      },
+      {
         path: 'tasks', //localhost:4200/users/(o user id)/tasks/
         component: TasksComponent
       },
