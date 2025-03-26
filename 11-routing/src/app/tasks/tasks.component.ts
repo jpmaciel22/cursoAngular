@@ -23,7 +23,7 @@ export class TasksComponent {
       if(this.order() === 'desc'){
         return a.id > b.id ? -1:1
       }else {
-        return a.id > b.id? 1:-1
+        return a.id > b.id ? 1:-1
       }
     })
   );
