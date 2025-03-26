@@ -19,7 +19,6 @@ export class UserTasksComponent{
 
 
   ngOnInit(): void {
-    // console.log(this.activatedRoute.snapshot)
     this.activatedRoute.paramMap.subscribe({
       next: paramMap => this.userName = this.usersService.users.find( u => u.id === paramMap.get('userId'))?.name || ''
     })
