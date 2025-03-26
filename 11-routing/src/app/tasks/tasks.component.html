@@ -1,6 +1,6 @@
 <p>
-  <a routerLink="./" [queryParams]="{order: order === 'asc' ? 'desc' : 'asc'}">
-    @if(order === 'asc'){
+  <a routerLink="./" [queryParams]="{order: order() === 'asc' ? 'desc' : 'asc'}">
+    @if(order() === 'asc'){
       Sort by most recent
     }@else{
       Sort by oldest
