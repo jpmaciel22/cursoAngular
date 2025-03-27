@@ -16,7 +16,10 @@ export const routes: Routes =
     children: userRoutes,
     data: {
       dataInputTeste: 'Mensagem de teste.'
-    }
+    },
+//  resolve: {
+  //  userName: resolveUserName
+//  },
   },
   {
     path: '**',
