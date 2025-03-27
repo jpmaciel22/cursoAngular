@@ -16,3 +16,24 @@ export const routes: Routes = [{
   path: 'tasks/new',
   component: NewTaskComponent
 }]
+
+// abaixo colocarei o método se utilizando de route resolving, assim como fiz no user-tasks.
+
+// export const routes: Routes = [
+//   {
+//     path: '',
+//     redirectTo: 'tasks',
+//     pathMatch: 'full',
+//   },
+//   {
+//     path: 'tasks', // <your-domain>/users/<uid>/tasks
+//     component: TasksComponent,
+//     resolve: {
+//       userTasks: resolveUserTasks,
+//     },
+//   },
+//   {
+//     path: 'tasks/new',
+//     component: NewTaskComponent,
+//   },
+// ];
