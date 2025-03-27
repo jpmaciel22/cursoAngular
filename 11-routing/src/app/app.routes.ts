@@ -8,7 +8,8 @@ export const routes: Routes =
 [
   {
     path: '', //localhost:4200/
-    component: NoTaskComponent
+    component: NoTaskComponent,
+    title: 'No task selected'
   },
   {
     path: 'users/:userId', // localhost:4200/users/(o user id)/
@@ -17,12 +18,14 @@ export const routes: Routes =
     data: {
       dataInputTeste: 'Mensagem de teste.'
     },
+    title: 'Users management'
 //  resolve: {
   //  userName: resolveUserName
 //  },
   },
   {
     path: '**',
-    component: NotFoundComponent
+    component: NotFoundComponent,
+    title: 'Not found'
   },
    ]
