@@ -37,3 +37,7 @@ export class UserTasksComponent{
 //   const userName = usersService.users.find( u => u.id === activatedRoute.paramMap.get('userId'))?.name || '';
 //   return userName;
 // }
+
+
+// para acessar os dados da route dentro de um component sendo o "sentido inverso" basta acessar com:
+// this.activatedRoute.data
