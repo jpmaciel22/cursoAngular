@@ -16,7 +16,7 @@ export const routes: Routes =
     component: UserTasksComponent,
     children: userRoutes,
     data: {
-      dataInputTeste: 'Mensagem de teste.'
+      dataInputTeste: 'Mensagem de teste.',
     },
     title: resolveTitle
 //  resolve: {
