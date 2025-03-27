@@ -30,14 +30,20 @@ export class UserTasksComponent{
 // aqui abaixo é caso quisessemos fazer com essa alternativa do observables de activated route,
 // só que utilizando fora da classe, direto no app.routes.ts, e para isso devemos exportar daqui e importar lá em resolve.
 
-// export const resolveUserName: ResolveFn<string> = (
-//   activatedRoute: ActivatedRouteSnapshot, routerState: RouterStateSnapshot
-// ) =>{
-//   const usersService = inject(UsersService);
-//   const userName = usersService.users.find( u => u.id === activatedRoute.paramMap.get('userId'))?.name || '';
-//   return userName;
-// }
+export const resolveUserName: ResolveFn<string> = (
+  activatedRoute: ActivatedRouteSnapshot, routerState: RouterStateSnapshot
+) =>{
+  const usersService = inject(UsersService);
+  const userName = usersService.users.find( u => u.id === activatedRoute.paramMap.get('userId'))?.name || '';
+  return userName;
+}
 
 
 // para acessar os dados da route dentro de um component sendo o "sentido inverso" basta acessar com:
 // this.activatedRoute.data
+
+export const resolveTitle: ResolveFn<string> = (
+  activatedRoute, routerState
+) => {
+  return resolveUserName(activatedRoute, routerState) + '\'s Tasks'
+}
