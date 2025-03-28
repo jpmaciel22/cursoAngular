@@ -29,22 +29,29 @@ const resolveUserTasks: ResolveFn<Task[]> = (
 
 export const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'tasks',
-    pathMatch: 'full',
-  },
-  {
-    path: 'tasks', // <your-domain>/users/<uid>/tasks
-    component: TasksComponent, //caso queiramos fazer lazy loading como mostrado abaixo:
-    // loadComponent: () => import('../tasks/tasks.component').then(content => content.TasksComponent),
-    runGuardsAndResolvers: 'always',
-    resolve: {
-      userTasks: resolveUserTasks,
+    path:'',
+    providers:[TasksService],
+    children:
+    [
+      {
+      path: '',
+      redirectTo: 'tasks',
+      pathMatch: 'full',
     },
-  },
-  {
-    path: 'tasks/new',
-    component: NewTaskComponent,
-    canDeactivate: [canLeaveEditPage]
+    {
+      path: 'tasks', // <your-domain>/users/<uid>/tasks
+      component: TasksComponent, //caso queiramos fazer lazy loading como mostrado abaixo:
+      // loadComponent: () => import('../tasks/tasks.component').then(content => content.TasksComponent),
+      runGuardsAndResolvers: 'always',
+      resolve: {
+        userTasks: resolveUserTasks,
+      },
+    },
+    {
+      path: 'tasks/new',
+      component: NewTaskComponent,
+      canDeactivate: [canLeaveEditPage]
+    },
+    ]
   },
 ];
