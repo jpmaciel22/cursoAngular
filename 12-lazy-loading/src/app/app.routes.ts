@@ -30,7 +30,7 @@ export const routes: Routes = [
   {
     path: 'users/:userId', // <your-domain>/users/<uid>
     component: UserTasksComponent,
-    loadChildren: () => import('./users/users.routes').then((content) => content.routes),
+    loadChildren: () => import('./users/users.routes').then((content) => content.routes), // lazy loading das children routes
     canMatch: [dummyCanMatch],
     data: {
       message: 'Hello!',
