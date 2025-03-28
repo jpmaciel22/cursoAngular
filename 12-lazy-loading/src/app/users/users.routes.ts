@@ -11,7 +11,8 @@ export const routes: Routes = [
   },
   {
     path: 'tasks', // <your-domain>/users/<uid>/tasks
-    component: TasksComponent,
+    // component: TasksComponent, //caso queiramos fazer lazy loading como mostrado abaixo:
+    loadComponent: () => import('../tasks/tasks.component').then(content => content.TasksComponent),
     runGuardsAndResolvers: 'always',
     resolve: {
       userTasks: resolveUserTasks,
